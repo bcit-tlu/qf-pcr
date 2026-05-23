@@ -1,0 +1,16 @@
+version: "3"
+
+services:
+  qf-pcr:
+    image: qf-pcr
+    build:
+      context: .
+      target: builder
+    command: npm run start
+    environment:
+      - DEBUG=True
+    working_dir: /app
+    volumes:
+      - './src:/app/src'
+    ports:
+      - "3000:3000"

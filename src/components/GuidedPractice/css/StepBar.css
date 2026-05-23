@@ -1,0 +1,84 @@
+.step-arrows:not(:last-child)::before {
+    content: " ";
+    position: absolute;
+    display: block;
+    width: 0;
+    height: 0;
+    top: 50%;
+    left: 100%;
+    margin-top: -35px;
+    margin-left: 1px;
+    border-top: 35px solid transparent;
+    border-bottom: 35px solid transparent;
+    border-left: 20px solid #eee;
+    z-index: 1;
+}
+.step-arrows:not(:last-child)::after{
+    content: "";
+    position: absolute;
+    display: block;
+    width: 0;
+    height: 0;
+    top: 50%;
+    left: 100%;
+    margin-top: -35px;
+    border-top: 35px solid transparent;
+    border-bottom: 35px solid transparent;
+    border-left: 20px solid #f8f8f8;
+    z-index: 2;
+}
+
+.step-arrows{
+    height: 70px;
+    width: 25%;
+    background: #f8f8f8;
+    position: relative;
+    text-align: center;
+}
+
+.step-arrows-3 .step-arrows{
+    height: 70px;
+    width: 33.33%;
+    background: #f8f8f8;
+    position: relative;
+    text-align: center;
+}
+
+.step-arrows a{
+    color:gray;
+}
+
+.step-arrows.completed-step{
+    background-color: #cef3ff;
+}
+.step-arrows.completed-step a{
+    color: #83b6c5;
+}
+.step-arrows.completed-step::after{
+    border-left: 20px solid #cef3ff;
+}
+.step-arrows:not(:last-child).completed-step::before {
+    content: " ";
+    position: absolute;
+    display: block;
+    width: 0;
+    height: 0;
+    top: 50%;
+    left: 100%;
+    margin-top: -35px;
+    margin-left: 1px;
+    border-top: 35px solid transparent;
+    border-bottom: 35px solid transparent;
+    border-left: 20px solid #9fd2e0;
+    z-index: 1;
+}
+.step-arrows.current-step{
+    background-color: #5bc0de;
+}
+
+.step-arrows.current-step::after{
+    border-left: 20px solid #5bc0de;
+}
+.step-arrows.current-step a{
+    color:white;
+}

@@ -1,0 +1,210 @@
+{
+    "mcq_questions": [
+        {
+            "title": "The fluorescent label in QF-PCR is present on:",
+            "type": "mcq",
+            "choices": [
+                " the primers",
+                "the nucleotides",
+                "one of the nucleotides",
+                "a and b"
+            ],
+            "answer": 0,
+            "feedback": "Correct: by labelling the primers, different labels can be used, allowing for multiplexing"
+        },
+        {
+            "title": "How many copies of the original (diploid) template will be produced after 26 PCR reaction cycles?",
+            "type": "mcq",
+            "choices": [
+                "2 x 26",
+                "1²⁶",
+                "2²⁶",
+                "impossible to determine, as the reaction has moved out of the exponential phase"
+            ],
+            "answer": 2,
+            "feedback": "Correct: 26 cycles is within the exponential phase, so the number of copies double for each cycle (number of cycles = n). Therefore 2ⁿ = the number of copies"
+        },
+        {
+            "title": "The problem with the original polymerase used for PCR was:",
+            "type": "mcq",
+            "choices": [
+                "it is no longer available",
+                "it was expensive",
+                "it needed to be replaced after every cycle",
+                "it was thermostable"
+            ],
+            "answer": 2,
+            "feedback": "Correct: the high temperature used for denaturation would inactive the original polymerase"
+        },
+        {
+            "title": "The most common “livebirth” trisomy is:",
+            "type": "mcq",
+            "choices": [
+                "Down syndrome",
+                "Edwards syndrome",
+                "Patau syndrome",
+                "Turner syndrome"
+            ],
+            "answer": 0,
+            "feedback": "Correct: Down syndrome frequency is 1/700 live births"
+        },
+        {
+            "title": "QF-PCR is quantitative because",
+            "type": "mcq",
+            "choices": [
+                "it is based on PCR",
+                "it is real-time PCR",
+                "it is rapid",
+                "it is based on limited cycle PCR"
+            ],
+            "answer": 3,
+            "feedback": "Correct: the PCR reaction is halted during the exponential phase"
+        },
+        {
+            "title": "The term aneuploidy has the same meaning as:",
+            "type": "mcq",
+            "choices": [
+                "46 chromosomes",
+                "chromosomal trisomy",
+                "chromosomal monosomy",
+                "chromosomal trisomy or monosomy"
+            ],
+            "answer": 3,
+            "feedback": "Correct: aneuploidy is changes in chromosome number not equal to an entire haploid set, so one extra or one missing is an example of aneuploidy"
+        },
+        {
+            "title": "If a chromosome marker has one peak, the most likely conclusion is:",
+            "type": "mcq",
+            "choices": [
+                "there is only one copy of the chromosome",
+                "the marker must be on the Y chromosome",
+                "the marker is uninformative",
+                "there was an error in PCR amplification"
+            ],
+            "answer": 2,
+            "feedback": "Correct: while all these options are possible, there are more autosomal chromosome markers tested, and you cannot assess peak area ratios with only 1 chromosome, so the peak is uninformative."
+        },
+        {
+            "title": "An advantage of QF-PCR over conventional karyotyping is:",
+            "type": "mcq",
+            "choices": [
+                "QF-PCR does not require culturing of cells",
+                "QF-PCR can also detect balanced translocations",
+                "QF-PCR uses microscopy",
+                "QF-PCR is performed using a commercial kit"
+            ],
+            "answer": 0,
+            "feedback": "Correct: often culturing fails, so it is an advantage to use isolated DNA for PCR instead"
+        },
+        {
+            "title": "The most important step for PCR reaction specificity is:",
+            "type": "mcq",
+            "choices": [
+                "denaturation",
+                "annealing",
+                "extension",
+                "all of the above"
+            ],
+            "answer": 1,
+            "feedback": "Correct: the temperature for annealing the primer is based on primer G/C content and should be set so the primer will only bind to specific unique sequences"
+        },
+        {
+            "title": "Which of the following is not a reason for performing QF-PCR?",
+            "type": "mcq",
+            "choices": [
+                "the pregnant person is over 40 years old",
+                "PAPP-A result is abnormal",
+                "couple wants to know biological sex of fetus",
+                "fetal ultrasound is abnormal"
+            ],
+            "answer": 2,
+            "feedback": "Correct: QF-PCR Is for prenatal assessment of aneuploidy risk, or for assessing for trisomy after pregnancy loss"
+        },
+        {
+            "title": "For TAF9L, the Chromosome 3 peak is",
+            "type": "mcq",
+            "choices": [
+                "sometimes absent",
+                "sometimes 1/2 the area of the Chromosome X peak",
+                "sometimes the same area of the Chromosome X peak",
+                "sometimes doubled (i.e has 2 separate peaks)"
+            ],
+            "answer": 2,
+            "feedback": "Correct: The Chromosome 3 product is invariant and always has a peak area equivalent to 2: if there are 2 copies of Chromosome X, the area of both peaks should be the same"
+        },
+        {
+            "title": "The normal peak area range is:",
+            "type": "mcq",
+            "choices": [
+                "there is no range, the value is always 1",
+                "0.5 – 1.5",
+                "0.45 – 0.65",
+                "0.8 – 1.2"
+            ],
+            "answer": 3,
+            "feedback": "Correct: unless the 2 peaks for a marker are separated by more than 24bp, this is the ratio for a chromosomal copy number of 2 (i.e.normal)"
+        }
+    ],
+    "tf_questions": [
+        {
+            "title": "Livebirth aneuploidies for autosome chromosomes are all trisomies",
+            "type": "tf",
+            "answer": "true"
+        },
+        {
+            "title": "PCR is based on viral replication",
+            "type": "tf",
+            "answer": "false"
+        },
+        {
+            "title": "PCR uses magnesium as an enzyme cofactor",
+            "type": "tf",
+            "answer": "true"
+        },
+        {
+            "title": "Chromosome 21 is assessed for prenatal and pregnancy loss cases",
+            "type": "tf",
+            "answer": "true"
+        },
+        {
+            "title": "If one QF-PCR marker shows evidence of trisomy, that is sufficient evidence to conclude that a trisomy is present",
+            "type": "tf",
+            "answer": "false"
+        },
+        {
+            "title": "The first step in PCR is the separation of DNA into single strands",
+            "type": "tf",
+            "answer": "true"
+        },
+        {
+            "title": "If all Chromosome X markers have one peak, the patient must be a biological male",
+            "type": "tf",
+            "answer": "false"
+        },
+        {
+            "title": "TAF9L amplifies loci on Chromosome 3 and Chromosome X ",
+            "type": "tf",
+            "answer": "true"
+        },
+        {
+            "title": "The ratio calculation for QF-PCR is based on peak height",
+            "type": "tf",
+            "answer": "false"
+        },
+        {
+            "title": "Patau syndrome is associated with trisomy of chromosome 18",
+            "type": "tf",
+            "answer": "false"
+        },
+        {
+            "title": "Klinefelter syndrome is a syndrome associated with sex chromosome aneuploidy",
+            "type": "tf",
+            "answer": "true"
+        },
+        {
+            "title": "All chromosome trisomies can be detected by the current QF-PCR kits",
+            "type": "tf",
+            "answer": "false"
+        }
+    ]
+}
