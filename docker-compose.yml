@@ -1,16 +1,27 @@
-version: "3"
+name: ${APP_NAME:-qf-pcr}
 
 services:
-  qf-pcr:
-    image: qf-pcr
+
+  app:
     build:
       context: .
       target: builder
+      platforms:
+        - linux/amd64
+        - linux/arm64
+
     command: npm run start
+
     environment:
-      - DEBUG=True
-    working_dir: /app
+      - DEBUG=true
+      - CI=false
+      - CHOKIDAR_USEPOLLING=true
+      - WATCHPACK_POLLING=true
+      - NODE_ENV=development
+
     volumes:
-      - './src:/app/src'
+      - ./src:/app/src
+      - ./public:/app/public
+
     ports:
       - "3000:3000"

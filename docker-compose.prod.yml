@@ -1,0 +1,16 @@
+name: ${APP_NAME:-qf-pcr}-prod
+
+services:
+
+  app:
+    build:
+      context: .
+      platforms:
+        - linux/amd64
+        - linux/arm64
+
+    environment:
+      - NODE_ENV=production
+
+    ports:
+      - "8080:8080"
