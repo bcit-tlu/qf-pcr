@@ -1,37 +1,31 @@
-# Dockerfile
-
-## Build/Dev
-FROM node:16 AS builder
+# Dev stage — dependencies only (used by docker-compose.yml)
+FROM node:24-alpine AS dev
 
 WORKDIR /app
 
 COPY package*.json ./
 
-RUN npm install
+RUN npm ci
 
-COPY . ./
-
-RUN npm run build
+COPY . /app
 
 
-## Clean
+# Build stage — production assets
+FROM dev AS builder
 
-FROM nginx:alpine AS cleaner
-
-WORKDIR /usr/share/nginx/html
-
-RUN set -ex; \
-    rm -rf ./*;
-
-COPY --from=builder /app/build ./
+ENV NODE_OPTIONS=--openssl-legacy-provider
+RUN CI=false npm run build
 
 
-## Release
+# Runtime stage
+FROM nginxinc/nginx-unprivileged:alpine3.22-perl
 
-FROM nginxinc/nginx-unprivileged AS release
+LABEL maintainer=courseproduction@bcit.ca
+LABEL org.opencontainers.image.source="https://github.com/bcit-tlu/qf-pcr"
+LABEL org.opencontainers.image.description="QF-PCR — Quantitative Fluorescence PCR online learning module"
 
-LABEL maintainer courseproduction@bcit.ca
+COPY conf.d/default.conf /etc/nginx/conf.d/default.conf
 
 WORKDIR /usr/share/nginx/html
 
-COPY --from=cleaner /usr/share/nginx/html/ ./
+COPY --from=builder /app/build/ ./
