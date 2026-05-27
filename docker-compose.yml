@@ -5,7 +5,7 @@ services:
   app:
     build:
       context: .
-      target: builder
+      target: dev
       platforms:
         - linux/amd64
         - linux/arm64

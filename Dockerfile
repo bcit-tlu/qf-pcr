@@ -1,5 +1,5 @@
-# Build stage
-FROM node:24-alpine AS builder
+# Dev stage — dependencies only (used by docker-compose.yml)
+FROM node:24-alpine AS dev
 
 WORKDIR /app
 
@@ -8,6 +8,10 @@ COPY package*.json ./
 RUN npm ci
 
 COPY . /app
+
+
+# Build stage — production assets
+FROM dev AS builder
 
 ENV NODE_OPTIONS=--openssl-legacy-provider
 RUN CI=false npm run build
