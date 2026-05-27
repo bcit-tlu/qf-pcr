@@ -9,6 +9,7 @@ RUN npm ci
 
 COPY . /app
 
+ENV NODE_OPTIONS=--openssl-legacy-provider
 RUN CI=false npm run build
 
 
