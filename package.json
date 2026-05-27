@@ -1,6 +1,6 @@
 {
   "name": "qf-pcr",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "private": true,
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^1.2.35",
@@ -47,5 +47,4 @@
       "last 1 safari version"
     ]
   }
-
 }
