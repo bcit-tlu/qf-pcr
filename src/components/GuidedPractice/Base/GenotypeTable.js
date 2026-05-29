@@ -1,6 +1,5 @@
 import React, {Component} from "react";
-import { Button, Container, Row, Table, Card } from "react-bootstrap";
-import NormalMale from '../../../assets/normalMaleKey.jpg';
+import { Button, Row, Col, Table, Card } from "react-bootstrap";
 import { TransformWrapper, TransformComponent } from "react-zoom-pan-pinch";
 
 class GenotypeTable extends Component{
@@ -29,7 +28,7 @@ class GenotypeTable extends Component{
             }
 
         }
-        this.state = {tableState:tableState};
+        this.state = { tableState };
     }
     onValueChange(key,valueName,value){
         var tableState = {...this.state.tableState}
@@ -90,6 +89,59 @@ class GenotypeTable extends Component{
         return warningStr;
     }
 
+    renderImageViewer(height){
+        return (
+            <TransformWrapper initialScale={0.5} minScale={0.4} maxScale={2} centerOnInit={true}>
+                {({ zoomIn, zoomOut, resetTransform }) => (
+                    <React.Fragment>
+                        <div className="mb-2">
+                            <Button variant="outline-primary" className="mr-2 py-1" onClick={() => zoomIn()}>Zoom In</Button>
+                            <Button variant="outline-primary" className="mr-2 py-1" onClick={() => zoomOut()}>Zoom Out</Button>
+                            <Button variant="outline-primary" className="mr-2 py-1" onClick={() => resetTransform()}>Reset</Button>
+                        </div>
+                        <TransformComponent wrapperStyle={{width:"100%", height:height}}>
+                            <img src={this.props.data.image} alt="Normal Male Key" />
+                        </TransformComponent>
+                    </React.Fragment>
+                )}
+            </TransformWrapper>
+        );
+    }
+
+    renderTable(){
+        const stickyHeader = {position:"sticky", top:0, background:"#f3f3f3", zIndex:1};
+        return (
+            <Table size="sm">
+                <thead>
+                    <tr>
+                        <th style={stickyHeader}>Marker</th>
+                        <th style={stickyHeader}>Area 1</th>
+                        <th style={stickyHeader}>Area 2</th>
+                        <th style={stickyHeader}>Area 3</th>
+                        <th style={stickyHeader}>A1/A2</th>
+                        <th style={stickyHeader}>Warning</th>
+                        <th style={stickyHeader}>Notes</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {Object.keys(this.state.tableState).map((key)=>{
+                        return (
+                            <tr key={key}>
+                                <td>{key}</td>
+                                <td><input style={{width:55}} type="number" onInput={(e) => e.target.value = e.target.value.slice(0, 5)} value={this.state.tableState[key].area1} onChange={(e)=>{this.onValueChange(key,"area1",e.target.value)}}/></td>
+                                <td><input style={{width:55}} type="text" onInput={(e) => e.target.value = e.target.value.slice(0, 5)} maxLength={5} value={this.state.tableState[key].area2} onChange={(e)=>{this.onValueChange(key,"area2",e.target.value)}}/></td>
+                                <td><input style={{width:55}} disabled={key==="AMEL" || key==="TAF9L"} type="text" onInput={(e) => e.target.value = e.target.value.slice(0, 5)} maxLength={5} value={this.state.tableState[key].area3} onChange={(e)=>{this.onValueChange(key,"area3",e.target.value)}}/></td>
+                                <td>{this.state.tableState[key].ratio}</td>
+                                <td style={{color:"red"}}>{this.state.tableState[key].warning}</td>
+                                <td style={{fontSize:"0.8em", maxWidth:160, whiteSpace:"normal"}}>{this.state.tableState[key].notes}</td>
+                            </tr>
+                        )
+                    },this)}
+                </tbody>
+            </Table>
+        );
+    }
+
     render(){
         return (
             <>
@@ -101,61 +153,23 @@ class GenotypeTable extends Component{
                     <li>3 alleles: 3 peaks seen</li>
                     <li>Absent: marker not seen (i.e. for Y chrom specific markers in biological female)</li>
                 </ul>
-                <Card>
-                    <Card.Body>
-                        <TransformWrapper initialScale={0.5} minScale={0.4} maxScale={2} centerOnInit={true}>
-                            {({ zoomIn, zoomOut, resetTransform }) => (
-                                <React.Fragment>
-                                    <div className="tools"  className="mb-2">
-                                        <Button variant="outline-primary" className="mr-2 py-1" onClick={() => zoomIn()}>Zoom In</Button>
-                                        <Button variant="outline-primary" className="mr-2 py-1" onClick={() => zoomOut()}>Zoom Out</Button>
-                                        <Button variant="outline-primary" className="mr-2 py-1" onClick={() => resetTransform()}>Reset</Button>
-                                    </div>
-                                    <TransformComponent wrapperStyle={{width:"100%",height:600}}>
-                                        <img src={this.props.data.image} alt="Normal Male Key" />
-                                    </TransformComponent>
-                                </React.Fragment>
-                            )}
-
-                        </TransformWrapper>
-                    </Card.Body>
-                </Card>
-            <div className="my-4 py-2" style={{maxHeight:500,overflowY:"scroll"}}>
-                <Table >
-                        <thead>
-                            <tr>
-                                <th style={{position:"sticky",top:"-9px",background:"#f3f3f3"}}>Marker</th>
-                                <th style={{position:"sticky",top:"-9px",background:"#f3f3f3"}}>Area 1</th>
-                                <th style={{position:"sticky",top:"-9px",background:"#f3f3f3"}}>Area 2</th>
-                                <th style={{position:"sticky",top:"-9px",background:"#f3f3f3"}}>Area 3</th>
-                                <th style={{position:"sticky",top:"-9px",background:"#f3f3f3"}}>A1/A2</th>
-                                <th style={{position:"sticky",top:"-9px",background:"#f3f3f3"}}>Warning</th>
-                                <th style={{position:"sticky",top:"-9px",background:"#f3f3f3"}}>Notes</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            {Object.keys(this.state.tableState).map((key)=>{
-                                return (
-                                    <tr>
-                                        <td>{key}</td>
-                                        <td><input style={{width:70}} type="number" onInput={(e) => e.target.value = e.target.value.slice(0, 5)} value={this.state.tableState[key].area1} onChange={(e)=>{this.onValueChange(key,"area1",e.target.value)}}/></td>
-                                        <td><input style={{width:70}} type="text" onInput={(e) => e.target.value = e.target.value.slice(0, 5)} maxLength={5} value={this.state.tableState[key].area2} onChange={(e)=>{this.onValueChange(key,"area2",e.target.value)}}/></td>
-                                        <td><input style={{width:70}} disabled={key==="AMEL" || key==="TAF9L"} type="text" onInput={(e) => e.target.value = e.target.value.slice(0, 5)} maxLength={5} value={this.state.tableState[key].area3} onChange={(e)=>{this.onValueChange(key,"area3",e.target.value)}}/></td>
-                                        <td>{this.state.tableState[key].ratio}</td>
-                                        <td style={{color:"red"}}>{this.state.tableState[key].warning}</td>
-                                        <td style={{width:300}}>{this.state.tableState[key].notes}</td>
-                                    </tr>
-                                )
-                            },this)}
-                        
-                        </tbody>
-                    </Table>                                   
-            </div>
-            
-                <Button onClick={this.props.onClickNext} style={{width: 100,marginLeft:"auto"}}>Next</Button>
+                <Row className="mt-3">
+                    <Col xs={12} lg={7}>
+                        <Card style={{height:"65vh", border:"none"}}>
+                            <Card.Body style={{height:"100%", padding:"0.5rem"}}>
+                                {this.renderImageViewer("100%")}
+                            </Card.Body>
+                        </Card>
+                    </Col>
+                    <Col xs={12} lg={5} className="mt-3 mt-lg-0">
+                        <div style={{height:"65vh", overflowY:"auto", overflowX:"auto", border:"1px solid rgba(0,0,0,.125)", borderRadius:"0.375rem"}}>
+                            {this.renderTable()}
+                        </div>
+                    </Col>
+                </Row>
+                <Button onClick={this.props.onClickNext} style={{width:100, marginLeft:"auto", display:"block", marginTop:"1rem"}}>Next</Button>
             </>
-
-        )
+        );
     }
 }
 export default GenotypeTable;
