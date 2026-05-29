@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.0.6](https://github.com/bcit-tlu/qf-pcr/compare/v1.0.5...v1.0.6) (2026-05-29)
+
+
+### Bug Fixes
+
+* change genotype table layout ([aa6ebbc](https://github.com/bcit-tlu/qf-pcr/commit/aa6ebbc6975f60064c3774f4f0c5693b9dbba8f1))
+
 ## [1.0.5](https://github.com/bcit-tlu/qf-pcr/compare/v1.0.4...v1.0.5) (2026-05-27)
 
 
