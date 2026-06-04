@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.1.1](https://github.com/bcit-tlu/qf-pcr/compare/v1.1.0...v1.1.1) (2026-06-04)
+
+
+### Bug Fixes
+
+* add OpenTelemetry collector endpoint configuration to Helm values ([64d1913](https://github.com/bcit-tlu/qf-pcr/commit/64d191348baf17197e589ac250bac4e4c37806c1))
+
 ## [1.1.0](https://github.com/bcit-tlu/qf-pcr/compare/v1.0.6...v1.1.0) (2026-06-04)
 
 
