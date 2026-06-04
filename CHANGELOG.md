@@ -1,5 +1,13 @@
 # Changelog
 
+## [1.1.0](https://github.com/bcit-tlu/qf-pcr/compare/v1.0.6...v1.1.0) (2026-06-04)
+
+
+### Features
+
+* add OpenTelemetry browser instrumentation and analytics ([0f50419](https://github.com/bcit-tlu/qf-pcr/commit/0f504196112c2f6264ee775e7a25f839ac9c6da7))
+* add OpenTelemetry browser instrumentation and analytics ([4c7d968](https://github.com/bcit-tlu/qf-pcr/commit/4c7d968a797f737bb7c2228d22ef477004928822))
+
 ## [1.0.6](https://github.com/bcit-tlu/qf-pcr/compare/v1.0.5...v1.0.6) (2026-05-29)
 
 
