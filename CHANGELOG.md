@@ -1,5 +1,13 @@
 # Changelog
 
+## [1.1.2](https://github.com/bcit-tlu/qf-pcr/compare/v1.1.1...v1.1.2) (2026-06-04)
+
+
+### Bug Fixes
+
+* add nginx configuration via ConfigMap and restore DNS resolver for OTel proxy ([f58bb4d](https://github.com/bcit-tlu/qf-pcr/commit/f58bb4daef4a240eb26901d05977c9e213984901))
+* remove resolver directive from OTel logs proxy configuration ([c8c3116](https://github.com/bcit-tlu/qf-pcr/commit/c8c3116f6532765841057753d53e525352b38e6f))
+
 ## [1.1.1](https://github.com/bcit-tlu/qf-pcr/compare/v1.1.0...v1.1.1) (2026-06-04)
 
 
