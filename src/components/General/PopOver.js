@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import { Component } from 'react';
 import { OverlayTrigger, Tooltip } from 'react-bootstrap';
 import './css/PopOver.css';
 class PopOver extends Component {

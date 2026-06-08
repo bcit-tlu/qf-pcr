@@ -1,5 +1,5 @@
-import React, {Component} from "react";
-import { ListGroup, Container, Button, Table } from 'react-bootstrap';
+import {Component} from "react";
+import { Container, Button, Table } from 'react-bootstrap';
 import { setModuleComplete } from "../../util/utils";
 import { AES } from "crypto-js";
 
@@ -17,7 +17,7 @@ class EvaluationPage extends Component{
         var totalQuestions = 0;
         var markers = JSON.parse(localStorage.getItem(this.props.match.params.caseType+this.props.match.params.caseId+"_markers"));
         for (let question of Object.keys(markers)){
-            for (const [key, value] of Object.entries(markers[question])){
+            for (const [, value] of Object.entries(markers[question])){
                 totalQuestions++;
                 if (value.correct){
                     correctMarkers++;

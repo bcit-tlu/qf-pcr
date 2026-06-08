@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import { Component } from 'react';
 import { Button, Alert, Form, ListGroupItem, Card, ListGroup } from 'react-bootstrap';
 import { setModuleComplete } from '../../util/utils';
 
@@ -60,9 +60,9 @@ class Quiz extends Component {
         questions[index] = { ...questions[index], user_input: input, 
             
             
-            correct: questions[index].type == "mcq" ? input == questions[index].choices[questions[index].answer] :
+            correct: questions[index].type === "mcq" ? input === questions[index].choices[questions[index].answer] :
         
-            input == questions[index].answer
+            input === questions[index].answer
         };
 
         let userInputRec = questions.filter((i) => i.user_input);
@@ -84,7 +84,7 @@ class Quiz extends Component {
                             <Card.Text>
                                 <div onChange={(i) => this.answerQuestions(index, i.target.value)} key={`inline-radio`} className="mb-3">
 
-                                    {i.type == 'mcq' ?
+                                    {i.type === 'mcq' ?
                                         <ol type="a">
                                             {i.choices.map((q) =>
                                                 <li><Form.Check

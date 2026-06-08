@@ -1,5 +1,5 @@
-import React, {Component} from "react";
-import { Col, Nav, Row, Card, Tabs, Tab, Container, Button } from 'react-bootstrap';
+import {Component} from "react";
+import { Col, Nav, Row, Card, Tab } from 'react-bootstrap';
 import ReviewPeaks from './ReviewPeaks';
 import IdentifyMarkers from "./IdentifyMarkers";
 import GenotypeTable from "./GenotypeTable";
@@ -163,9 +163,9 @@ class Main extends Component{
                             <Tab.Pane eventKey={1}>
                                 <Card className="px-5 py-5 mb-5">
                                     <IdentifyMarkers 
-                                        saveAnswers={this.props.category!="guidedpractice"} 
-                                        canSkip={this.props.category=="guidedpractice"} 
-                                        showEvaluation={this.props.category == "guidedpractice"} 
+                                        saveAnswers={this.props.category !== "guidedpractice"} 
+                                        canSkip={this.props.category === "guidedpractice"} 
+                                        showEvaluation={this.props.category === "guidedpractice"} 
                                         data={this.data} 
                                         onClickNext={this.onClickNext} 
                                         caseType={this.props.match.params.caseType} 

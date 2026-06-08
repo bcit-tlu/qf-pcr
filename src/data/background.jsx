@@ -1,6 +1,4 @@
-import React from "react";
 import PopOver from '../components/General/PopOver';
-import PCRPhoto from '../assets/pcr_photo.png';
 
 import trisomy13 from '../assets/tri13_circled.png';
 import trisomy18 from '../assets/tri18_circled.png';
@@ -8,9 +6,9 @@ import trisomy21 from '../assets/tri21_circled.png';
 import klinefelter_47XXY from '../assets/XXY_circled.png';
 import turner from '../assets/Turner_circled.png';
 
-import { Figure, Image, Table } from 'react-bootstrap';
+import { Figure, Table } from 'react-bootstrap';
 
-export default [
+const backgroundData = [
     {
         id:"what-is-pcr",
         title:"What is QF-PCR?",
@@ -40,7 +38,7 @@ export default [
             <p>
                 Since fluorescent primers are used, the amount of PCR product can be detected and quantified, based on the area under the fluorescent “peak” generated for each PCR product (peak areas are noted below each peak, as seen below):
             </p>
-            <img src={"https://qf-pcr-bucket.s3.ca-central-1.amazonaws.com/images/bg_1.png"}></img>
+            <img src={"https://qf-pcr-bucket.s3.ca-central-1.amazonaws.com/images/bg_1.png"} alt="" />
             <p>
                 Note that this example shows one of the two results expected from a normal individual: 2 peaks with a peak ratio (i.e the ratio obtained by dividing the first peak area by the second) between 0.8 and 1.4 (called a 1:1 ratio). This individual is heterozygous for this marker and this is why 2 peaks are seen.
             </p>
@@ -49,7 +47,7 @@ export default [
                 <br></br>
                 <br></br>
 
-                <img src={"https://qf-pcr-bucket.s3.ca-central-1.amazonaws.com/images/bg_3.png"}></img>
+                <img src={"https://qf-pcr-bucket.s3.ca-central-1.amazonaws.com/images/bg_3.png"} alt="" />
             </p>
             <p>
                 Unfortunately, this is also the result seen for failure to successfully amplify PCR products. For this reason, a single peak is considered uninformative.
@@ -59,8 +57,8 @@ export default [
                     <br></br>
                     <br></br>
 
-                    <img src={"https://qf-pcr-bucket.s3.ca-central-1.amazonaws.com/images/bg_2.png"}></img>
-                    <img className={"ml-4"} src={"https://qf-pcr-bucket.s3.ca-central-1.amazonaws.com/images/bg_4.png"}></img>
+                    <img src={"https://qf-pcr-bucket.s3.ca-central-1.amazonaws.com/images/bg_2.png"} alt="" />
+                    <img className={"ms-4"} src={"https://qf-pcr-bucket.s3.ca-central-1.amazonaws.com/images/bg_4.png"} alt="" />
 
             </p>
             <h5>Challenging Cases</h5>
@@ -71,7 +69,7 @@ export default [
             <p>
                 The effect of mosaicism can vary depending on the percentage of cells in the patient that have the alternate karyotype. For this example, note the marked extra peak for the marker on Chromosome 21: this suggests mosaicism.
             </p>
-            <img src={"https://qf-pcr-bucket.s3.ca-central-1.amazonaws.com/images/bg_5.png"}></img>
+            <img src={"https://qf-pcr-bucket.s3.ca-central-1.amazonaws.com/images/bg_5.png"} alt="" />
             <br></br>
             <br></br>
 
@@ -79,7 +77,7 @@ export default [
             <p>
             Non-fetal cell contamination is always a possibility when collecting fetal cells. These contaminant cells can potentially cause difficulties in results interpretation as it can be difficult to determine which results were generated from the fetal cells. The amount of contamination can vary, but notice in the example below that all informative markers have either a short extra peak, or the peak ratios are unusual (compare to the mosaic case, where only one chromosome had unusual results).
             </p>
-            <img src={"https://qf-pcr-bucket.s3.ca-central-1.amazonaws.com/images/bg_6.png"}></img>
+            <img src={"https://qf-pcr-bucket.s3.ca-central-1.amazonaws.com/images/bg_6.png"} alt="" />
         </div>
     },
     {
@@ -143,16 +141,16 @@ export default [
                 </thead>
                 <tbody>
                     <tr>
-                        <td>Down syndrome: <br></br>trisomy 21<br></br><img src={"https://qf-pcr-bucket.s3.ca-central-1.amazonaws.com/images/aneuploidy_trisomy_21.png"}></img></td><td>1/700 live births</td><td>flat facial profile, mental retardation, cardiac issues, abnormal immune system, eventual neuropathological disorder; increased risk of acute leukemia</td>
+                        <td>Down syndrome: <br></br>trisomy 21<br></br><img src={"https://qf-pcr-bucket.s3.ca-central-1.amazonaws.com/images/aneuploidy_trisomy_21.png"} alt="" /></td><td>1/700 live births</td><td>flat facial profile, mental retardation, cardiac issues, abnormal immune system, eventual neuropathological disorder; increased risk of acute leukemia</td>
                     </tr>
                     <tr>
-                        <td>Edwards syndrome: <br></br>trisomy 18<br></br><img src={"https://qf-pcr-bucket.s3.ca-central-1.amazonaws.com/images/aneuploidy_trisomy_18.png"}></img></td><td>1/3000 live births</td><td>intrauterine growth restriction, micrognathia (small lower jaw), horseshoe kidney, clenched fist, survival &lt;1 yr</td>
+                        <td>Edwards syndrome: <br></br>trisomy 18<br></br><img src={"https://qf-pcr-bucket.s3.ca-central-1.amazonaws.com/images/aneuploidy_trisomy_18.png"} alt="" /></td><td>1/3000 live births</td><td>intrauterine growth restriction, micrognathia (small lower jaw), horseshoe kidney, clenched fist, survival &lt;1 yr</td>
                     </tr>
                     <tr>
-                        <td>Patau syndrome: <br></br>trisomy 13<br></br><img src={"https://qf-pcr-bucket.s3.ca-central-1.amazonaws.com/images/aneuploidy_trisomy_13.png"}></img></td><td>1/21700 live births</td><td>cleft palate, heart damage, mental retardation, survival &lt;6 mon</td>
+                        <td>Patau syndrome: <br></br>trisomy 13<br></br><img src={"https://qf-pcr-bucket.s3.ca-central-1.amazonaws.com/images/aneuploidy_trisomy_13.png"} alt="" /></td><td>1/21700 live births</td><td>cleft palate, heart damage, mental retardation, survival &lt;6 mon</td>
                     </tr>
                     <tr>
-                        <td>Klinefelter syndrome: <br></br>varies, but most often 47,XXY<br></br><img src={"https://qf-pcr-bucket.s3.ca-central-1.amazonaws.com/images/aneuploidy_klinefelter.png"}></img></td><td>1/500-650 live births</td><td>male hypogonadism, long legs, gynecomastia, low testosterone</td>
+                        <td>Klinefelter syndrome: <br></br>varies, but most often 47,XXY<br></br><img src={"https://qf-pcr-bucket.s3.ca-central-1.amazonaws.com/images/aneuploidy_klinefelter.png"} alt="" /></td><td>1/500-650 live births</td><td>male hypogonadism, long legs, gynecomastia, low testosterone</td>
                     </tr>
                     <tr>
                         <td>XYY syndrome: 47,XYY </td><td>1/1000 live births</td><td>excessive height, acne 1%-2% behavioral disorders</td>
@@ -161,7 +159,7 @@ export default [
                         <td>Multi X: 47,XXX or 48,XXXX</td><td>1/1200 live births</td><td>Mental retardation increases with increasing X</td>
                     </tr>
                     <tr>
-                        <td>Turner syndrome: <br></br>varies but most often 45,X (monosomy X)<br></br><img src={"https://qf-pcr-bucket.s3.ca-central-1.amazonaws.com/images/aneuploidy_monosomy_x.png"}></img></td><td>1/2000 – 1/5000 live births</td><td>bilateral neck webbing, heart disease, failure to develop secondary sex characteristics hypothyroidism</td>
+                        <td>Turner syndrome: <br></br>varies but most often 45,X (monosomy X)<br></br><img src={"https://qf-pcr-bucket.s3.ca-central-1.amazonaws.com/images/aneuploidy_monosomy_x.png"} alt="" /></td><td>1/2000 – 1/5000 live births</td><td>bilateral neck webbing, heart disease, failure to develop secondary sex characteristics hypothyroidism</td>
                     </tr>
                 </tbody>
             </Table>
@@ -325,9 +323,9 @@ QF-PCR can be performed on DNA extracted from amniotic fluid cells, chorionic vi
             <h5>Interpretation</h5>
             <ul>
                 <li>normal: one peak or 2 peaks with similar peak areas</li>
-                <img src={"https://qf-pcr-bucket.s3.ca-central-1.amazonaws.com/images/bg_1.png"}></img>
+                <img src={"https://qf-pcr-bucket.s3.ca-central-1.amazonaws.com/images/bg_1.png"} alt="" />
                 <li>abnormal: 2 peaks with 1:2 or 2:1 ratio, or 2 peaks (with 1:1:1) ratio</li>
-                <img src={"https://qf-pcr-bucket.s3.ca-central-1.amazonaws.com/images/bg_2.png"}></img>
+                <img src={"https://qf-pcr-bucket.s3.ca-central-1.amazonaws.com/images/bg_2.png"} alt="" />
 
             </ul>
             <h5>Limitations</h5>
@@ -341,3 +339,4 @@ QF-PCR can be performed on DNA extracted from amniotic fluid cells, chorionic vi
         </div>
     }
 ];
+export default backgroundData;

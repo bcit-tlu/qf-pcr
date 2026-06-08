@@ -45,7 +45,7 @@ class FinalConclusion extends Component{
 
             var conclusion = JSON.stringify({"answer":this.state.finalAnswer,"correct":this.props.data.final_conclusion===this.state.finalAnswer});
             if (this.props.category==="practice"){
-                if (this.props.data.final_conclusion!=this.state.finalAnswer){
+                if (this.props.data.final_conclusion !== this.state.finalAnswer){
                     if (this.state.attempts < 3){
                         alert("Answer incorrect! (Attempts remaining: " + (3 - (this.state.attempts + 1)) + ")");
                         if (this.state.attempts+1 >= 3){
@@ -76,7 +76,7 @@ class FinalConclusion extends Component{
     }
     updateAttempts(){
         let currentAttempts = localStorage.getItem(`${this.props.caseType}${this.props.caseId}_attempts`);
-        if (currentAttempts == null){
+        if (currentAttempts === null){
             localStorage.setItem(`${this.props.caseType}${this.props.caseId}_attempts`, 0);
         }
         else{
@@ -120,12 +120,12 @@ class FinalConclusion extends Component{
                 <br></br>
             </p>
 
-            <Dropdown className="mb-3 mr-2" as={ButtonGroup}>
+            <Dropdown className="mb-3 me-2" as={ButtonGroup}>
                 <label className="mx-0 my-0 px-4 py-0 rounded-left" style={{border:"1px solid gray",lineHeight:"38px"}}>
                     {this.state.finalAnswer===""?"Select":this.state.finalAnswer}
                 </label>
                 <Dropdown.Toggle variant="secondary" style={{height:40}}/>
-                <Dropdown.Menu alignRight>
+                <Dropdown.Menu align="end">
                     {this.finalOptions.map((item)=>{
                         return <Dropdown.Item onClick={()=>{this.setState({finalAnswer:item})}}>{item}</Dropdown.Item>
                     })}

@@ -13,7 +13,6 @@ COPY . /app
 # Build stage — production assets
 FROM dev AS builder
 
-ENV NODE_OPTIONS=--openssl-legacy-provider
 RUN CI=false npm run build
 
 

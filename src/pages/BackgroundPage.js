@@ -1,11 +1,11 @@
-import React, { Component } from 'react';
-import { Button, Row, Tab, Col, Nav, Image, Container, Card, ListGroup } from 'react-bootstrap';
+import { Component } from 'react';
+import { Button, Row, Tab, Col, Container, Card, ListGroup } from 'react-bootstrap';
 
 import backgroundData from '../data/background';
 class BackgroundPage extends Component {
 
-    constructor() {
-        super();
+    constructor(props) {
+        super(props);
         this.state = {
             currentTab:0
         }
@@ -36,7 +36,7 @@ class BackgroundPage extends Component {
                                         <ListGroup variant="flush" >
                                             {this.background_data.map(function(x,index) {
                                                 return (
-                                                    <ListGroup.Item onClick={()=>this.setState({currentTab:index})} key={x.id} className={this.state.currentTab==index?'bg-info text-white':''} style={{cursor:"pointer"}}> 
+                                                    <ListGroup.Item onClick={()=>this.setState({currentTab:index})} key={x.id} className={this.state.currentTab === index?'bg-info text-white':''} style={{cursor:"pointer"}}> 
                                                         {x.title}
                                                     </ListGroup.Item>
                                                 )

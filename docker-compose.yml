@@ -18,7 +18,7 @@ services:
       - CHOKIDAR_USEPOLLING=true
       - WATCHPACK_POLLING=true
       - NODE_ENV=development
-      - NODE_OPTIONS=--openssl-legacy-provider
+      - GENERATE_SOURCEMAP=false
 
     volumes:
       - ./src:/app/src

@@ -9,7 +9,7 @@ class IdentifyMarkers extends Component {
     constructor(props) {
         super(props);
         this.initState = this.initState.bind(this);
-        this.initState();
+        this.state = this.initState();
         this.createDropdown = this.createDropdown.bind(this);
         this.getAnswerBackground = this.getAnswerBackground.bind(this);
         this.onAnswerSelect = this.onAnswerSelect.bind(this);
@@ -33,7 +33,7 @@ class IdentifyMarkers extends Component {
     
     saveAnswers(){
         if (this.props.saveAnswers){
-            if (this.props.caseType!=null && this.props.caseType != "" && this.props.caseId!=null){
+            if (this.props.caseType !== null && this.props.caseType !== "" && this.props.caseId !== null){
                 localStorage.setItem(this.props.caseType+this.props.caseId+"_markers",JSON.stringify(this.state.answers));
             }
         }
@@ -43,7 +43,7 @@ class IdentifyMarkers extends Component {
 
         if (!this.props.canSkip){
             for (let question of Object.keys(this.state.answers)){
-                for (const [key, value] of Object.entries(this.state.answers[question])){
+                for (const [, value] of Object.entries(this.state.answers[question])){
                     if (value === '' || value === null ){
                         return false;
                     }
@@ -61,7 +61,7 @@ class IdentifyMarkers extends Component {
                 answerState[key][question.id]="";
             }
         }
-        this.state = {answers:answerState};
+        return {answers:answerState};
 
     }
 
@@ -113,12 +113,12 @@ class IdentifyMarkers extends Component {
         for (let x in question_data){
             for (let question of question_data[x]){
                 dropdown.push(
-                    <Dropdown className="mb-3 mr-2" as={ButtonGroup}>
+                    <Dropdown className="mb-3 me-2" as={ButtonGroup}>
                         <label className="mx-0 my-0 px-4 py-0 rounded-left" style={{border:`1px solid ${this.state.answers[key][question.id]===""?'grey':'#0275d8'}`,lineHeight:"38px",background:this.getAnswerBackground(this.state.answers[key][question.id].correct)}}>
                             {this.state.answers[key][question.id]===""?"Select":this.state.answers[key][question.id].name} 
                         </label>
                         <Dropdown.Toggle variant={this.state.answers[key][question.id]===""?"secondary":"primary"} style={{height:40}}/>
-                        <Dropdown.Menu alignRight>
+                        <Dropdown.Menu align="end">
                             {question.options.map(function(option){
                                 return <Dropdown.Item onClick={()=>{this.onAnswerSelect(key, option, question)}}>{option.name}</Dropdown.Item>
                             },this)}
@@ -135,7 +135,7 @@ class IdentifyMarkers extends Component {
         return (
             <>
                 <h2>Identify markers</h2>
-                <p>In the following interactive chromatogram example, examine each marker and select which Chromosome the marker is on (look at label at the bottom), and whether the marker has One peak (and therefore is uninformative) has 2 peaks (and therefore is diallelic) or has 3 peaks (and therefore is triallelic). Zoom in on the image if necessary. Notice that the peak area is labelled underneath each peak (you will use this data in Step 3). {this.props.category == "guidedpractice"? "Correct answers will be marked in green and with a checkmark; incorrect answers will be marked in red and with an x. You can try again if your selection was not correct. ":""}Note that AMEL and TAF9L have unique selections:
+                <p>In the following interactive chromatogram example, examine each marker and select which Chromosome the marker is on (look at label at the bottom), and whether the marker has One peak (and therefore is uninformative) has 2 peaks (and therefore is diallelic) or has 3 peaks (and therefore is triallelic). Zoom in on the image if necessary. Notice that the peak area is labelled underneath each peak (you will use this data in Step 3). {this.props.category === "guidedpractice"? "Correct answers will be marked in green and with a checkmark; incorrect answers will be marked in red and with an x. You can try again if your selection was not correct. ":""}Note that AMEL and TAF9L have unique selections:
 <br></br>
 <br></br>
 
@@ -151,13 +151,13 @@ TAF9L: compare peak heights: if the first peak is 2x than the second one, this i
                             <TransformWrapper initialScale={0.3} minScale={0.3} maxScale={2} centerOnInit={true}>
                                 {({ zoomIn, zoomOut, resetTransform }) => (
                                     <React.Fragment>
-                                        <div className="tools"  className="mb-2">
-                                            <Button variant="outline-primary" className="mr-2 py-1" onClick={() => zoomIn()}>Zoom In</Button>
-                                            <Button variant="outline-primary" className="mr-2 py-1" onClick={() => zoomOut()}>Zoom Out</Button>
-                                            <Button variant="outline-primary" className="mr-2 py-1" onClick={() => resetTransform()}>Reset</Button>
+                                        <div className="mb-2">
+                                            <Button variant="outline-primary" className="me-2 py-1" onClick={() => zoomIn()}>Zoom In</Button>
+                                            <Button variant="outline-primary" className="me-2 py-1" onClick={() => zoomOut()}>Zoom Out</Button>
+                                            <Button variant="outline-primary" className="me-2 py-1" onClick={() => resetTransform()}>Reset</Button>
                                         </div>
                                         <TransformComponent wrapperStyle={{width:"100%",height:600}}>
-                                            <img src={this.props.data.image} />
+                                            <img src={this.props.data.image} alt="Chromatogram" />
                                         </TransformComponent>
                                     </React.Fragment>
                                 )}
@@ -174,7 +174,7 @@ TAF9L: compare peak heights: if the first peak is 2x than the second one, this i
                                             <div>
                                                     <label style={{fontWeight:"bold", color:'#6c757d'}}>{key} 
                                                         <span>
-                                                            <img className="ml-2" style={{height:15}} src={this.checkQuestionCorrect(key)}></img>
+                                                            <img className="ms-2" style={{height:15}} src={this.checkQuestionCorrect(key)} alt="" />
                                                         </span>
                                                     </label> 
                                                 <div>

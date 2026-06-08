@@ -1,5 +1,5 @@
-import React, { Component } from 'react';
-import { Container, Card,ListGroup } from 'react-bootstrap';
+import { Component } from 'react';
+import { Container, ListGroup } from 'react-bootstrap';
 
 
 class PracticeCaseListPage extends Component {
@@ -78,7 +78,7 @@ class PracticeCaseListPage extends Component {
     render() {
         return (
             <Container>
-                <h2 className='my-3 text-info text-monospace'>Practice Cases</h2>
+                <h2 className='my-3 text-info font-monospace'>Practice Cases</h2>
                 <div className="px-5 py-4">
                     {Object.keys(this.cases).map((key)=>{
                         return (

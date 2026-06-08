@@ -5,7 +5,7 @@ import { TransformWrapper, TransformComponent } from "react-zoom-pan-pinch";
 class GenotypeTable extends Component{
     constructor(props) {
         super(props);
-        this.initState();
+        this.state = this.initState();
         this.onValueChange = this.onValueChange.bind(this);
         this.calculateValue = this.calculateValue.bind(this);
     }
@@ -28,7 +28,7 @@ class GenotypeTable extends Component{
             }
 
         }
-        this.state = { tableState };
+        return { tableState };
     }
     onValueChange(key,valueName,value){
         var tableState = {...this.state.tableState}
@@ -38,8 +38,8 @@ class GenotypeTable extends Component{
         this.setState({tableState});
     }
     calculateValue(val1,val2){
-        if ((val1 != null && val1 != '') && (val2 != null && val2 != '')){
-            if ( val2 == 0 ){
+        if ((val1 !== null && val1 !== '') && (val2 !== null && val2 !== '')){
+            if ( val2 === 0 ){
                 return "";
             }
             var ratio = (Number.parseFloat(val1)/Number.parseFloat(val2)).toFixed(4);
@@ -55,8 +55,6 @@ class GenotypeTable extends Component{
         var abnormalRatioRange1Max = 0.65;
         var abnormalRatioRange2Min = 1.8;
         var abnormalRatioRange2Max = 2.4;
-        var normalRatioRangeTAF9LMin = 1.97;
-        var normalRatioRangeTAF9LMax = 2.57; 
         var ratioCheck1 = abnormalRatioRange1Min <= ratio && ratio <= abnormalRatioRange1Max;
         var ratioCheck2 = abnormalRatioRange2Min <= ratio && ratio <= abnormalRatioRange2Max;
         if (key === "TAF9L"){
@@ -74,7 +72,7 @@ class GenotypeTable extends Component{
         if (ratioCheck1 || ratioCheck2){
             warningStr = "Abnormal ratio detected"
         }
-        if ((data.area1 != null && data.area1.length>0) && data.area2 != null && data.area2.length>0 && data.area3 != null && data.area3.length>0){
+        if ((data.area1 !== null && data.area1.length>0) && data.area2 !== null && data.area2.length>0 && data.area3 !== null && data.area3.length>0){
             if (warningStr.length>0){
                 warningStr = warningStr+", ";
             }
@@ -95,9 +93,9 @@ class GenotypeTable extends Component{
                 {({ zoomIn, zoomOut, resetTransform }) => (
                     <React.Fragment>
                         <div className="mb-2">
-                            <Button variant="outline-primary" className="mr-2 py-1" onClick={() => zoomIn()}>Zoom In</Button>
-                            <Button variant="outline-primary" className="mr-2 py-1" onClick={() => zoomOut()}>Zoom Out</Button>
-                            <Button variant="outline-primary" className="mr-2 py-1" onClick={() => resetTransform()}>Reset</Button>
+                            <Button variant="outline-primary" className="me-2 py-1" onClick={() => zoomIn()}>Zoom In</Button>
+                            <Button variant="outline-primary" className="me-2 py-1" onClick={() => zoomOut()}>Zoom Out</Button>
+                            <Button variant="outline-primary" className="me-2 py-1" onClick={() => resetTransform()}>Reset</Button>
                         </div>
                         <TransformComponent wrapperStyle={{width:"100%", height:height}}>
                             <img src={this.props.data.image} alt="Normal Male Key" />
