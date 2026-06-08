@@ -1,5 +1,13 @@
 # Changelog
 
+## [1.1.3](https://github.com/bcit-tlu/qf-pcr/compare/v1.1.2...v1.1.3) (2026-06-08)
+
+
+### Bug Fixes
+
+* retrigger pipeline for new package-lock.json ([3044f3d](https://github.com/bcit-tlu/qf-pcr/commit/3044f3d136819bd7634f0e75e3ed944003d4541a))
+* version bump, align localhost UI with production after Bootstrap 4→5 migration ([31806a1](https://github.com/bcit-tlu/qf-pcr/commit/31806a16ec156ef2257963534412edf1391a19e0))
+
 ## [1.1.2](https://github.com/bcit-tlu/qf-pcr/compare/v1.1.1...v1.1.2) (2026-06-04)
 
 
