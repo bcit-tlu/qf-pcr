@@ -1,5 +1,13 @@
 # Changelog
 
+## [1.1.4](https://github.com/bcit-tlu/qf-pcr/compare/v1.1.3...v1.1.4) (2026-07-01)
+
+
+### Bug Fixes
+
+* **ci:** drop setup-buildx-action from release-retag job ([605caea](https://github.com/bcit-tlu/qf-pcr/commit/605caea26539310824e30ffcdf529defb2ccdd5e))
+* **ci:** drop setup-buildx-action from release-retag job ([26bb11f](https://github.com/bcit-tlu/qf-pcr/commit/26bb11f3ec1c34fc85b86fedc0534193f31f93a2))
+
 ## [1.1.3](https://github.com/bcit-tlu/qf-pcr/compare/v1.1.2...v1.1.3) (2026-06-08)
 
 
