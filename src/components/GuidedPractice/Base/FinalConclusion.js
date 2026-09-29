@@ -1,6 +1,7 @@
 import { Component } from "react";
 import { Dropdown, Button, ButtonGroup } from 'react-bootstrap';
 import { setModuleComplete } from '../../../util/utils.js';
+import { trackEvent } from '../../../otel';
 
 class FinalConclusion extends Component{
     constructor(props) {
@@ -32,6 +33,7 @@ class FinalConclusion extends Component{
         this.updateAttempts = this.updateAttempts.bind(this);
     }
     onFinish(){
+        trackEvent('case_answered', { category: this.props.category, case_type: this.props.caseType, case_id: String(this.props.caseId ?? ''), answer: this.state.finalAnswer, correct: this.props.data.final_conclusion === this.state.finalAnswer });
         if (this.props.category==="guidedpractice"){
             if (this.props.data.final_conclusion === this.state.finalAnswer){
                 setModuleComplete(this.props.title,true);

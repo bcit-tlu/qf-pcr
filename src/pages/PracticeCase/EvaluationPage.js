@@ -2,6 +2,7 @@ import {Component} from "react";
 import { Container, Button, Table } from 'react-bootstrap';
 import { setModuleComplete } from "../../util/utils";
 import { AES } from "crypto-js";
+import { trackEvent } from "../../otel";
 
 class EvaluationPage extends Component{
     constructor(props){
@@ -10,9 +11,11 @@ class EvaluationPage extends Component{
         this.onClickRetry = this.onClickRetry.bind(this);
         this.onClickFinish = this.onClickFinish.bind(this);
         this.state = {conclusionCorrect:this.checkConclusion()};
+        const { correct, total } = this.getMarkersScore();
+        trackEvent('case_evaluated', { category: this.props.match.params.category, case_type: this.props.match.params.caseType, case_id: this.props.match.params.caseId, markers_correct: correct, markers_total: total, conclusion_correct: this.state.conclusionCorrect });
 
     }
-    calculateMarkersScore(){
+    getMarkersScore(){
         var correctMarkers = 0;
         var totalQuestions = 0;
         var markers = JSON.parse(localStorage.getItem(this.props.match.params.caseType+this.props.match.params.caseId+"_markers"));
@@ -24,6 +27,10 @@ class EvaluationPage extends Component{
                 }
             }
         }
+        return { correct: correctMarkers, total: totalQuestions };
+    }
+    calculateMarkersScore(){
+        const { correct: correctMarkers, total: totalQuestions } = this.getMarkersScore();
         return  <td className={correctMarkers/totalQuestions===1?"text-success":"text-danger"} style={{textAlign:"right"}}>{`${correctMarkers}/${totalQuestions}`}</td>;
     }
     checkConclusion(){

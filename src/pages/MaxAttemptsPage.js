@@ -1,7 +1,12 @@
 import { Component } from "react";
 import { Container, Button } from 'react-bootstrap';
+import { trackEvent } from '../otel';
 
 class MaxAttemptsPage extends Component{
+    componentDidMount(){
+        const { category, caseType, caseId } = this.props.match.params;
+        trackEvent('max_attempts_reached', { category, case_type: caseType, case_id: caseId });
+    }
     resetAttempts(){
         localStorage.removeItem(`${this.props.match.params.caseType}${this.props.match.params.caseId}_attempts`);
 

@@ -1,6 +1,7 @@
 import { Component } from 'react';
 import { Button, Alert, Form, ListGroupItem, Card, ListGroup } from 'react-bootstrap';
 import { setModuleComplete } from '../../util/utils';
+import { trackEvent } from '../../otel';
 
 class Quiz extends Component {
 
@@ -149,6 +150,8 @@ class Quiz extends Component {
                                     onClick={() => {
                                             this.setState({showFeedback: true,submitted:true});
                                             window.scrollTo(0, 0);
+                                            this.state.data.forEach((q) => trackEvent('quiz_question_answered', { quiz: 'Quiz #1', question: q.title, correct: !!q.correct }));
+                                            trackEvent('quiz_submitted', { quiz: 'Quiz #1', score: this.state.data.filter((i) => i.correct).length, total: this.state.data.length, passed: this.checkAllCorrect() });
                                             if (this.checkAllCorrect()){
                                                 setModuleComplete("Quiz #1",true)
                                             }
