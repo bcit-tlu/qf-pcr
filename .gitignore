@@ -24,3 +24,6 @@ yarn-error.log*
 
 # direnv
 .direnv/
+
+# Local git worktrees (convention: <repo>/.worktrees/<name>)
+.worktrees/
