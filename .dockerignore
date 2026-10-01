@@ -4,3 +4,4 @@ build
 Dockerfile
 .DS_Store
 .git
+.worktrees/
